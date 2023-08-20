@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:tmdb_movies_flutter/data/repositories/movie_repository.dart';
-import 'package:tmdb_movies_flutter/domain/entities/app_error.dart';
-import 'package:tmdb_movies_flutter/domain/entities/movie_entity.dart';
-import 'package:tmdb_movies_flutter/domain/usecases/usecase.dart';
+import '../../data/repositories/movie_repository.dart';
+import '../entities/app_error.dart';
+import '../entities/movie_entity.dart';
+import 'usecase.dart';
 
 import '../entities/no_params.dart';
 
