@@ -1,7 +1,9 @@
+import 'package:dartz/dartz.dart';
 import 'package:tmdb_movies_flutter/data/data_sources/movie_remote_data_source.dart';
 import 'package:tmdb_movies_flutter/data/models/results.dart';
 import 'package:tmdb_movies_flutter/domain/entities/movie_entity.dart';
 
+import '../../domain/entities/app_error.dart';
 import 'movie_repository.dart';
 
 class MovieRepositoryImpl extends MovieRepository {
@@ -10,42 +12,42 @@ class MovieRepositoryImpl extends MovieRepository {
   MovieRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<List<MovieModel>?> getTrending() async {
+  Future<Either<AppError, List<MovieModel>?>> getTrending() async {
     try {
       final movies = await remoteDataSource.getTrending();
-      return movies;
+      return Right(movies);
     } on Exception {
-      return null;
+      return Left(AppError('Something went wrong.'));
     }
   }
 
   @override
-  Future<List<MovieEntity>?> getComingSoon() async {
+  Future<Either<AppError, List<MovieModel>?>> getComingSoon() async {
     try {
       final movies = await remoteDataSource.getComingSoon();
-      return movies;
+      return Right(movies);
     } on Exception {
-      return null;
+      return Left(AppError('Something went wrong.'));
     }
   }
 
   @override
-  Future<List<MovieEntity>?> getPlayingNow() async {
+  Future<Either<AppError, List<MovieModel>?>> getPlayingNow() async {
     try {
       final movies = await remoteDataSource.getPlayingNow();
-      return movies;
+      return Right(movies);
     } on Exception {
-      return null;
+      return Left(AppError('Something went wrong.'));
     }
   }
 
   @override
-  Future<List<MovieEntity>?> getPopular() async {
+  Future<Either<AppError, List<MovieModel>?>> getPopular() async {
     try {
       final movies = await remoteDataSource.getPopular();
-      return movies;
+      return Right(movies);
     } on Exception {
-      return null;
+      return Left(AppError('Something went wrong.'));
     }
   }
 }

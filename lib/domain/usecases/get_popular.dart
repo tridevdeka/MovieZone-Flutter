@@ -6,12 +6,13 @@ import 'package:tmdb_movies_flutter/domain/usecases/usecase.dart';
 
 import '../entities/no_params.dart';
 
-class GetTrending extends UseCase<List<MovieEntity>?,NoParams> {
+class GetPopular extends UseCase<List<MovieEntity>?,NoParams> {
   final MovieRepository movieRepository;
 
-  GetTrending(this.movieRepository);
+  GetPopular(this.movieRepository);
 
+  @override
   Future<Either<AppError, List<MovieEntity>?>> call(NoParams noParams) async {
-    return await movieRepository.getTrending();
+    return await movieRepository.getPopular();
   }
 }
