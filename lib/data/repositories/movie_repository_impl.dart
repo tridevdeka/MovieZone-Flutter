@@ -7,7 +7,6 @@ import 'movie_repository.dart';
 
 class MovieRepositoryImpl extends MovieRepository {
   final MovieRemoteDataSource remoteDataSource;
-
   MovieRepositoryImpl(this.remoteDataSource);
 
   @override
