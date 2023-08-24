@@ -2,18 +2,25 @@ import 'package:tmdb_movies_flutter/domain/entities/movie_entity.dart';
 
 class MovieModel extends MovieEntity {
   final bool? adult;
+  @override
   final String? backdropPath;
+  @override
   final int? id;
+  @override
   final String? title;
   final String? originalLanguage;
   final String? originalTitle;
+  @override
   final String? overview;
+  @override
   final String? posterPath;
   final String? mediaType;
   final List<int>? genreIds;
   final num? popularity;
+  @override
   final String? releaseDate;
   final bool? video;
+  @override
   final num? voteAverage;
   final int? voteCount;
 

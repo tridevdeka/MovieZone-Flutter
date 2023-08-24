@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:tmdb_movies_flutter/data/core/api_client.dart';
 
 import '../models/movies_result_model.dart';

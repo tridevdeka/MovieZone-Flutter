@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:tmdb_movies_flutter/data/data_sources/movie_remote_data_source.dart';
 import 'package:tmdb_movies_flutter/data/models/results.dart';
-import 'package:tmdb_movies_flutter/domain/entities/movie_entity.dart';
 
 import '../../domain/entities/app_error.dart';
 import 'movie_repository.dart';

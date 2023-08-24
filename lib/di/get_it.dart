@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
+import 'package:tmdb_movies_flutter/presentation/blocs/movie_carousel_bloc/movie_carousel_bloc.dart';
 
 import '../data/core/api_client.dart';
 import '../data/data_sources/movie_remote_data_source.dart';
@@ -21,5 +22,6 @@ Future init() async {
     ..registerLazySingleton<GetPopular>(() => GetPopular(getItInstance()))
     ..registerLazySingleton<GetPlayingNow>(() => GetPlayingNow(getItInstance()))
     ..registerLazySingleton<GetComingSoon>(() => GetComingSoon(getItInstance()))
-    ..registerLazySingleton<MovieRepository>(() => MovieRepositoryImpl(getItInstance()));
+    ..registerLazySingleton<MovieRepository>(() => MovieRepositoryImpl(getItInstance()))
+    ..registerFactory(() => MovieCarouselBloc(getTrending: getItInstance()));
 }
