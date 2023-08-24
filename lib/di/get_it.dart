@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:http/http.dart';
 import 'package:tmdb_movies_flutter/presentation/blocs/movie_backdrop_bloc/movie_backdrop_bloc.dart';
 import 'package:tmdb_movies_flutter/presentation/blocs/movie_carousel_bloc/movie_carousel_bloc.dart';
+import 'package:tmdb_movies_flutter/presentation/blocs/movie_tabbed/movie_tabbed_bloc.dart';
 
 import '../data/core/api_client.dart';
 import '../data/data_sources/movie_remote_data_source.dart';
@@ -25,5 +26,7 @@ Future init() async {
     ..registerLazySingleton<GetComingSoon>(() => GetComingSoon(getItInstance()))
     ..registerLazySingleton<MovieRepository>(() => MovieRepositoryImpl(getItInstance()))
     ..registerFactory(() => MovieBackdropBloc())
-    ..registerFactory(() => MovieCarouselBloc(getItInstance(), getTrending: getItInstance()));
+    ..registerFactory(() => MovieCarouselBloc(getItInstance(), getTrending: getItInstance()))
+    ..registerFactory(() =>
+        MovieTabbedBloc(getPopular: getItInstance(), getPlayingNow: getItInstance(), getComingSoon: getItInstance()));
 }
