@@ -15,7 +15,7 @@ class TabTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         onTap.call();
       },
@@ -37,7 +37,7 @@ class TabTitleWidget extends StatelessWidget {
               .royalBlueSubtitle1 : Theme
               .of(context)
               .textTheme
-              .titleMedium,
+              .titleLarge,
         ),
       ),
     );

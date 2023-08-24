@@ -35,7 +35,7 @@ class ThemeText {
 }
 
 extension ThemeTextExtension on TextTheme {
-  TextStyle? get royalBlueSubtitle1 => titleMedium?.copyWith(
+  TextStyle? get royalBlueSubtitle1 => titleLarge?.copyWith(
         color: AppColor.royalBlue,
         fontWeight: FontWeight.w600,
       );

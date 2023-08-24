@@ -13,6 +13,10 @@ class MovieTabbedInitial extends MovieTabbedState {
   const MovieTabbedInitial(super.currentTabbedIndex);
 }
 
+class MovieTabbedLoadingState extends MovieTabbedState {
+  const MovieTabbedLoadingState(super.currentTabbedIndex);
+}
+
 class MovieTabbedChangedState extends MovieTabbedState {
   final List<MovieEntity>? movies;
 

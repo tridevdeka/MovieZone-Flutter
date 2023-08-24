@@ -3,7 +3,7 @@ import 'package:tmdb_movies_flutter/common/constants/size_constants.dart';
 import 'package:tmdb_movies_flutter/common/extensions/size_extensions.dart';
 import 'package:tmdb_movies_flutter/presentation/journeys/home/movie_tabbed/movie_tab_card_widget.dart';
 
-import '../../../domain/entities/movie_entity.dart';
+import '../../../../domain/entities/movie_entity.dart';
 
 class MovieListViewBuilder extends StatelessWidget {
   final List<MovieEntity> movies;

@@ -22,7 +22,6 @@ class MovieCarouselBloc extends Bloc<MovieCarouselEvent, MovieCarouselState> {
 
   FutureOr<void> _movieCarouselInitial(CarouselInitialEvent event, Emitter<MovieCarouselState> emit) async {
     emit(MovieCarouselLoadingState());
-    await Future.delayed(Duration(seconds: 1));
     final moviesEither = await getTrending(NoParams());
     emit(MovieCarouselLoaded(
         movies: moviesEither.fold((l) {

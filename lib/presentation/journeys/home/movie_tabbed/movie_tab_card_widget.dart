@@ -13,7 +13,7 @@ class MovieTabCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {},
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
