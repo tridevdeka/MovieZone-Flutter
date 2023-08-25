@@ -7,8 +7,11 @@ import 'package:tmdb_movies_flutter/common/extensions/size_extensions.dart';
 import 'package:tmdb_movies_flutter/common/extensions/string_extension.dart';
 import 'package:tmdb_movies_flutter/presentation/blocs/language_bloc/language_bloc/language_bloc.dart';
 import 'package:tmdb_movies_flutter/presentation/journeys/drawer/navigation_list_item.dart';
+import 'package:tmdb_movies_flutter/presentation/themes/theme_color.dart';
 import 'package:tmdb_movies_flutter/presentation/widgets/logo.dart';
+import 'package:wiredash/wiredash.dart';
 
+import '../../widgets/app_dialog.dart';
 import 'navigation_expanded_list_tile.dart';
 
 class HomeNavigationDrawer extends StatelessWidget {
@@ -54,11 +57,37 @@ class HomeNavigationDrawer extends StatelessWidget {
                 );
               },
             ),
-            NavigationListItem(title: TranslationConstant.feedback.t(context)!, onPressed: () {}),
-            NavigationListItem(title: TranslationConstant.about.t(context)!, onPressed: () {}),
+            NavigationListItem(
+                title: TranslationConstant.feedback.t(context)!,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Wiredash.of(context).show();
+                }),
+            NavigationListItem(
+                title: TranslationConstant.about.t(context)!,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  _showDialog(context);
+                }),
           ],
         ),
       ),
     );
+  }
+
+  void _showDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AppDialog(
+            Image.asset(
+              'assets/pngs/tmdb_logo.png',
+              height: Sizes.dimen_32.h,
+            ),
+            title: TranslationConstant.about,
+            description: TranslationConstant.aboutDescription,
+            buttonText: TranslationConstant.okay,
+          );
+        });
   }
 }
