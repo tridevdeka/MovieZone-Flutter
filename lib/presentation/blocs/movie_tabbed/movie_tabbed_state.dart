@@ -27,7 +27,8 @@ class MovieTabbedChangedState extends MovieTabbedState {
 }
 
 class MovieTabbedLoadErrorState extends MovieTabbedState {
-  const MovieTabbedLoadErrorState(super.currentTabbedIndex);
+  final AppErrorType errorType;
+  const MovieTabbedLoadErrorState(super.currentTabbedIndex, this.errorType);
 
   @override
   List<Object> get props => [currentTabbedIndex];

@@ -21,4 +21,8 @@ class MovieCarouselLoaded extends MovieCarouselState {
   List<Object?> get props => [movies, defaultIndex];
 }
 
-class MovieCarouselError extends MovieCarouselState {}
+class MovieCarouselError extends MovieCarouselState {
+  final AppErrorType errorType;
+
+  const MovieCarouselError(this.errorType);
+}

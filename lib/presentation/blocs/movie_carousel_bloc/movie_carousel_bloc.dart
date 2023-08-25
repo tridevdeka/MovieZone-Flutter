@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tmdb_movies_flutter/domain/entities/app_error.dart';
 
 import '../../../domain/entities/movie_entity.dart';
 import '../../../domain/entities/no_params.dart';
@@ -23,17 +24,14 @@ class MovieCarouselBloc extends Bloc<MovieCarouselEvent, MovieCarouselState> {
   FutureOr<void> _movieCarouselInitial(CarouselInitialEvent event, Emitter<MovieCarouselState> emit) async {
     emit(MovieCarouselLoadingState());
     final moviesEither = await getTrending(NoParams());
-    emit(MovieCarouselLoaded(
-        movies: moviesEither.fold((l) {
-      emit(MovieCarouselError());
-      return null;
+    emit(moviesEither.fold((l) {
+      return MovieCarouselError(l.appErrorType);
     }, (movies) {
-          movieBackdropBloc.add(MovieBackdropChangedEvent(movies![event.defaultIndex]));
-      MovieCarouselLoaded(
+      movieBackdropBloc.add(MovieBackdropChangedEvent(movies![event.defaultIndex]));
+      return MovieCarouselLoaded(
         movies: movies,
         defaultIndex: event.defaultIndex,
       );
-      return movies;
-    })));
+    }));
   }
 }

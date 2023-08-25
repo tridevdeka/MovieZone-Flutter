@@ -20,12 +20,12 @@ class MovieTabbedBloc extends Bloc<MovieTabbedEvent, MovieTabbedState> {
   final GetPlayingNow getPlayingNow;
   final GetComingSoon getComingSoon;
 
-  MovieTabbedBloc({required this.getPopular, required this.getPlayingNow, required this.getComingSoon}) : super(MovieTabbedInitial(0)) {
+  MovieTabbedBloc({required this.getPopular, required this.getPlayingNow, required this.getComingSoon})
+      : super(MovieTabbedInitial(0)) {
     on<MovieTabChangedEvent>(_movieTabChangedEvent);
   }
 
   FutureOr<void> _movieTabChangedEvent(MovieTabChangedEvent event, Emitter<MovieTabbedState> emit) async {
-
     emit(MovieTabbedLoadingState(event.currentTabIndex));
 
     Either<AppError, List<MovieEntity>?> moviesEither;
@@ -39,13 +39,11 @@ class MovieTabbedBloc extends Bloc<MovieTabbedEvent, MovieTabbedState> {
       default:
         moviesEither = await getPopular(NoParams());
     }
-    emit(MovieTabbedChangedState(event.currentTabIndex,
-        movies: moviesEither.fold((l) {
-          emit(MovieTabbedLoadErrorState(event.currentTabIndex));
-          return null;
-        }, (movies) {
-          MovieTabbedChangedState(event.currentTabIndex, movies: movies);
-          return movies;
-        })));
+    // emit(MovieTabbedLoadErrorState(event.currentTabIndex, AppErrorType.network));
+    emit(moviesEither.fold((l) {
+      return MovieTabbedLoadErrorState(event.currentTabIndex, l.appErrorType);
+    }, (movies) {
+      return MovieTabbedChangedState(event.currentTabIndex, movies: movies);
+    }));
   }
 }

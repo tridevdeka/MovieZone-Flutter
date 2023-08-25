@@ -8,6 +8,7 @@ import 'package:tmdb_movies_flutter/presentation/journeys/home/movie_carousel/mo
 import 'package:tmdb_movies_flutter/presentation/journeys/home/movie_tabbed/movie_tabbed_widget.dart';
 
 import '../drawer/navigation_drawer.dart';
+import '../../widgets/app_error_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -76,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       alignment: Alignment.topCenter,
                       heightFactor: 0.6,
                       child: MovieCarouselWidget(
-                        movies: loadedState.movies?? [],
+                        movies: loadedState.movies ?? [],
                         defaultIndex: loadedState.defaultIndex,
                       ),
                     ),
@@ -88,8 +89,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 );
 
+              case MovieCarouselError:
+                return AppErrorWidget(
+                  errorType: (state as MovieCarouselError).errorType,
+                  onPressed: () {
+                    movieCarouselBloc.add(CarouselInitialEvent());
+                  },
+                );
+
               default:
-                return SizedBox();
+                return SizedBox.shrink();
             }
           },
         ),

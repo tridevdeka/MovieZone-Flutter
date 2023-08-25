@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:tmdb_movies_flutter/data/data_sources/movie_remote_data_source.dart';
 import 'package:tmdb_movies_flutter/data/models/results.dart';
@@ -7,6 +9,7 @@ import 'movie_repository.dart';
 
 class MovieRepositoryImpl extends MovieRepository {
   final MovieRemoteDataSource remoteDataSource;
+
   MovieRepositoryImpl(this.remoteDataSource);
 
   @override
@@ -14,8 +17,11 @@ class MovieRepositoryImpl extends MovieRepository {
     try {
       final movies = await remoteDataSource.getTrending();
       return Right(movies);
+    } on SocketException {
+      //No internet
+      return Left(AppError(AppErrorType.network));
     } on Exception {
-      return Left(AppError('Something went wrong.'));
+      return Left(AppError(AppErrorType.api));
     }
   }
 
@@ -24,8 +30,11 @@ class MovieRepositoryImpl extends MovieRepository {
     try {
       final movies = await remoteDataSource.getComingSoon();
       return Right(movies);
+    } on SocketException {
+      //No internet
+      return Left(AppError(AppErrorType.network));
     } on Exception {
-      return Left(AppError('Something went wrong.'));
+      return Left(AppError(AppErrorType.api));
     }
   }
 
@@ -34,8 +43,11 @@ class MovieRepositoryImpl extends MovieRepository {
     try {
       final movies = await remoteDataSource.getPlayingNow();
       return Right(movies);
+    } on SocketException {
+      //No internet
+      return Left(AppError(AppErrorType.network));
     } on Exception {
-      return Left(AppError('Something went wrong.'));
+      return Left(AppError(AppErrorType.api));
     }
   }
 
@@ -44,8 +56,11 @@ class MovieRepositoryImpl extends MovieRepository {
     try {
       final movies = await remoteDataSource.getPopular();
       return Right(movies);
+    } on SocketException {
+      //No internet
+      return Left(AppError(AppErrorType.network));
     } on Exception {
-      return Left(AppError('Something went wrong.'));
+      return Left(AppError(AppErrorType.api));
     }
   }
 }
