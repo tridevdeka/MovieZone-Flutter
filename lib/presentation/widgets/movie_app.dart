@@ -17,6 +17,9 @@ class MovieApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Movie App',
       theme: ThemeData(
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+            primary:AppColor.royalBlue
+        ),
         primaryColor: AppColor.vulcan,
         scaffoldBackgroundColor: AppColor.vulcan,
         visualDensity: VisualDensity.adaptivePlatformDensity,

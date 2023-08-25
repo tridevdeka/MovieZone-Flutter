@@ -7,6 +7,8 @@ import 'package:tmdb_movies_flutter/presentation/blocs/movie_tabbed/movie_tabbed
 import 'package:tmdb_movies_flutter/presentation/journeys/home/movie_carousel/movie_carousel_widget.dart';
 import 'package:tmdb_movies_flutter/presentation/journeys/home/movie_tabbed/movie_tabbed_widget.dart';
 
+import '../drawer/navigation_drawer.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -55,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ],
       child: Scaffold(
+        drawer: HomeNavigationDrawer(),
         body: BlocBuilder<MovieCarouselBloc, MovieCarouselState>(
           bloc: movieCarouselBloc,
           builder: (context, state) {
