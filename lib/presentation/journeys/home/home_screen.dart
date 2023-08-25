@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       alignment: Alignment.topCenter,
                       heightFactor: 0.6,
                       child: MovieCarouselWidget(
-                        movies: loadedState.movies!,
+                        movies: loadedState.movies?? [],
                         defaultIndex: loadedState.defaultIndex,
                       ),
                     ),

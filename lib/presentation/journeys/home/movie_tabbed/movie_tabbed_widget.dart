@@ -58,7 +58,7 @@ class _MovieTabbedWidgetState extends State<MovieTabbedWidget> with SingleTicker
                 else if (state is MovieTabbedChangedState)
                   Expanded(
                       child: MovieListViewBuilder(
-                    movies: state.movies!,
+                    movies: state.movies?? [],
                   ))
               ],
             ),

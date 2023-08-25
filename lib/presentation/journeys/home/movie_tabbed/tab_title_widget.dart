@@ -6,6 +6,9 @@ import 'package:tmdb_movies_flutter/common/extensions/size_extensions.dart';
 import 'package:tmdb_movies_flutter/presentation/themes/theme_color.dart';
 import 'package:tmdb_movies_flutter/presentation/themes/theme_text.dart';
 
+import '../../../../common/constants/translation_constants.dart';
+import '../../../app_localization.dart';
+
 class TabTitleWidget extends StatelessWidget {
   final String title;
   final Function onTap;
@@ -23,21 +26,11 @@ class TabTitleWidget extends StatelessWidget {
         decoration: BoxDecoration(
             color: Colors.transparent,
             border: Border(
-                bottom: BorderSide(
-                    width: Sizes.dimen_1.w,
-                    color: isSelected ? AppColor.royalBlue : Colors.transparent
-                )
-            )
-        ),
+                bottom:
+                    BorderSide(width: Sizes.dimen_1.w, color: isSelected ? AppColor.royalBlue : Colors.transparent))),
         child: Text(
-          title,
-          style: isSelected ? Theme
-              .of(context)
-              .textTheme
-              .royalBlueSubtitle1 : Theme
-              .of(context)
-              .textTheme
-              .titleLarge,
+          AppLocalization.of(context)?.translate(title) ?? "Error", //"Popular","Now","Soon",
+          style: isSelected ? Theme.of(context).textTheme.royalBlueSubtitle1 : Theme.of(context).textTheme.titleLarge,
         ),
       ),
     );

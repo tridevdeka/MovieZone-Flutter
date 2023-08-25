@@ -5,8 +5,11 @@ import '../models/results.dart';
 
 abstract class MovieRemoteDataSource {
   Future<List<MovieModel>> getTrending();
+
   Future<List<MovieModel>> getPopular();
+
   Future<List<MovieModel>> getPlayingNow();
+
   Future<List<MovieModel>> getComingSoon();
 }
 
@@ -19,7 +22,6 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
   Future<List<MovieModel>> getTrending() async {
     final responseBody = await _client.get('trending/movie/day');
     final movies = MoviesResultModel.fromJson(responseBody).results;
-    print('TRENDING:: $movies');
     return movies!;
   }
 
@@ -27,7 +29,6 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
   Future<List<MovieModel>> getPopular() async {
     final responseBody = await _client.get('movie/popular');
     final movies = MoviesResultModel.fromJson(responseBody).results;
-    print('POPULAR:: $movies');
     return movies!;
   }
 
@@ -35,7 +36,6 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
   Future<List<MovieModel>> getComingSoon() async {
     final responseBody = await _client.get('movie/upcoming');
     final movies = MoviesResultModel.fromJson(responseBody).results;
-    print('UPCOMING:: $movies');
     return movies!;
   }
 
@@ -43,7 +43,6 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
   Future<List<MovieModel>> getPlayingNow() async {
     final responseBody = await _client.get('movie/now_playing');
     final movies = MoviesResultModel.fromJson(responseBody).results;
-    print('NOW PLAYING:: $movies');
     return movies!;
   }
 }

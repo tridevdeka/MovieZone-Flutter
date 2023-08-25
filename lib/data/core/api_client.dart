@@ -11,12 +11,13 @@ class ApiClient {
 
   dynamic get(String path) async {
     final response = await _client.get(
-      Uri.parse(
-          '${ApiConstants.BASE_URL}$path?api_key=${ApiConstants.API_KEY}'),
+      Uri.parse('${ApiConstants.BASE_URL}$path?api_key=${ApiConstants.API_KEY}'),
       headers: {
         'Content-Type': 'application/json',
       },
     );
+
+    print('PATH:: $path STATUS_CODE:: ${response.statusCode}  MSG:: ${response.reasonPhrase}');
 
     if (response.statusCode == 200) {
       return json.decode(response.body);

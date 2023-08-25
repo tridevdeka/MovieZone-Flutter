@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tmdb_movies_flutter/common/constants/languages.dart';
 import 'package:tmdb_movies_flutter/common/constants/size_constants.dart';
+import 'package:tmdb_movies_flutter/common/constants/translation_constants.dart';
 import 'package:tmdb_movies_flutter/common/extensions/size_extensions.dart';
+import 'package:tmdb_movies_flutter/common/extensions/string_extension.dart';
+import 'package:tmdb_movies_flutter/presentation/blocs/language_bloc/language_bloc/language_bloc.dart';
 import 'package:tmdb_movies_flutter/presentation/journeys/drawer/navigation_list_item.dart';
 import 'package:tmdb_movies_flutter/presentation/widgets/logo.dart';
 
@@ -34,14 +39,23 @@ class HomeNavigationDrawer extends StatelessWidget {
                 height: Sizes.dimen_6.h,
               ),
             ),
-            NavigationListItem(title: 'Favorite Movies', onPressed: (){}),
-            NavigationExpandListItem(title: 'Language',onPressed: (){},
-            children: const [
-              'English',
-              'Spanish'
-            ],),
-            NavigationListItem(title: 'Feedback', onPressed: (){}),
-            NavigationListItem(title: 'About', onPressed: (){}),
+            NavigationListItem(
+              title: TranslationConstant.favoriteMovies.t(context)!,
+              onPressed: () {},
+            ),
+            NavigationExpandListItem(
+              title: TranslationConstant.language.t(context)!,
+              children: Languages.languages.map((e) => e.value).toList(),
+              onPressed: (index) {
+                BlocProvider.of<LanguageBloc>(context).add(
+                  ToggleLanguageEvent(
+                    languageEntity: Languages.languages[index],
+                  ),
+                );
+              },
+            ),
+            NavigationListItem(title: TranslationConstant.feedback.t(context)!, onPressed: () {}),
+            NavigationListItem(title: TranslationConstant.about.t(context)!, onPressed: () {}),
           ],
         ),
       ),

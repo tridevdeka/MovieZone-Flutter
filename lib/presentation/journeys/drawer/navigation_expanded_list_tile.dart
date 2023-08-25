@@ -10,31 +10,26 @@ class NavigationExpandListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: (){
-        onPressed.call();
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-                color: Theme.of(context).primaryColor.withOpacity(0.7),
-                blurRadius: 2
-            )
-          ],
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+              color: Theme.of(context).primaryColor.withOpacity(0.7),
+              blurRadius: 2
+          )
+        ],
+      ),
+      child: ExpansionTile(
+        title: Text(
+          title,
+          style: Theme.of(context).textTheme.titleMedium,
         ),
-        child: ExpansionTile(
-          title: Text(
-            title,
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          children: [
-            for(int i=0;i<children.length;i++)
-              NavigationSubListItem(title: children[i], onPressed: (){
-                onPressed.call();
-              })
-          ],
-        ),
+        children: [
+          for(int i=0;i<children.length;i++)
+            NavigationSubListItem(title: children[i], onPressed: (){
+              onPressed.call(i);
+            })
+        ],
       ),
     );
   }
