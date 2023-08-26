@@ -5,6 +5,9 @@ import 'package:tmdb_movies_flutter/common/extensions/size_extensions.dart';
 import 'package:tmdb_movies_flutter/common/extensions/string_extension.dart';
 import 'package:tmdb_movies_flutter/data/core/api_constants.dart';
 
+import '../../movie_detail/movie_detail_arguments.dart';
+import '../../movie_detail/movie_detail_screen.dart';
+
 class MovieTabCardWidget extends StatelessWidget {
   final int movieId;
   final String title, posterPath;
@@ -14,7 +17,13 @@ class MovieTabCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){
+         return MovieDetailScreen(
+            movieDetailsArguments: MovieDetailsArguments(movieId),
+          );
+        }));
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

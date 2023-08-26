@@ -1,7 +1,10 @@
-import 'package:tmdb_movies_flutter/data/core/api_client.dart';
+import 'dart:developer';
 
-import '../models/movies_result_model.dart';
-import '../models/results.dart';
+import 'package:tmdb_movies_flutter/data/core/api_client.dart';
+import 'package:tmdb_movies_flutter/data/models/movie_detail/movie_detail_model.dart';
+
+import '../models/home/movies_result_model.dart';
+import '../models/home/results.dart';
 
 abstract class MovieRemoteDataSource {
   Future<List<MovieModel>> getTrending();
@@ -11,6 +14,8 @@ abstract class MovieRemoteDataSource {
   Future<List<MovieModel>> getPlayingNow();
 
   Future<List<MovieModel>> getComingSoon();
+
+  Future<MovieDetailModel> getMovieDetails(int id);
 }
 
 class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
@@ -44,5 +49,12 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
     final responseBody = await _client.get('movie/now_playing');
     final movies = MoviesResultModel.fromJson(responseBody).results;
     return movies!;
+  }
+
+  @override
+  Future<MovieDetailModel> getMovieDetails(int id) async {
+    final responseBody = await _client.get('movie/$id');
+    final movieDetail = MovieDetailModel.fromJson(responseBody);
+    return movieDetail;
   }
 }

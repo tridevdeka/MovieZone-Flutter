@@ -9,32 +9,27 @@ class ThemeText {
 
   static TextTheme get _poppinsTextTheme => GoogleFonts.poppinsTextTheme();
 
-  static TextStyle? get _whiteHeadline6 =>
-      _poppinsTextTheme.titleLarge?.copyWith(
+  static TextStyle? get _whiteHeadline6 => _poppinsTextTheme.titleLarge?.copyWith(
         fontSize: Sizes.dimen_20.sp.toDouble(),
         color: Colors.white,
       );
 
-  static TextStyle? get _whiteHeadline5 =>
-      _poppinsTextTheme.headlineSmall?.copyWith(
+  static TextStyle? get _whiteHeadline5 => _poppinsTextTheme.headlineSmall?.copyWith(
         fontSize: Sizes.dimen_24.sp.toDouble(),
         color: Colors.white,
       );
 
-  static TextStyle? get _whiteSubtitle1 =>
-      _poppinsTextTheme.titleMedium?.copyWith(
+  static TextStyle? get _whiteSubtitle1 => _poppinsTextTheme.titleMedium?.copyWith(
         fontSize: Sizes.dimen_16.sp.toDouble(),
         color: Colors.white,
       );
 
-  static TextStyle? get _whiteButton =>
-      _poppinsTextTheme.labelLarge?.copyWith(
+  static TextStyle? get _whiteButton => _poppinsTextTheme.labelLarge?.copyWith(
         fontSize: Sizes.dimen_14.sp.toDouble(),
         color: Colors.white,
       );
 
-  static TextStyle? get _whiteBodyText2 =>
-      _poppinsTextTheme.bodyMedium?.copyWith(
+  static TextStyle? get _whiteBodyText2 => _poppinsTextTheme.bodyMedium?.copyWith(
         fontSize: Sizes.dimen_14.sp.toDouble(),
         color: Colors.white,
         wordSpacing: 0.25,
@@ -42,21 +37,27 @@ class ThemeText {
         height: 1.5,
       );
 
-  static getTextTheme() =>
-      TextTheme(
+  static getTextTheme() => TextTheme(
         headlineSmall: _whiteHeadline5,
         titleLarge: _whiteHeadline6,
         titleMedium: _whiteSubtitle1,
         bodyMedium: _whiteBodyText2,
-        labelLarge:_whiteButton
+        labelLarge: _whiteButton,
       );
 }
 
 extension ThemeTextExtension on TextTheme {
-  TextStyle? get royalBlueSubtitle1 =>
-      titleLarge?.copyWith(
+  TextStyle? get royalBlueSubtitle1 => titleLarge?.copyWith(
         color: AppColor.royalBlue,
         fontWeight: FontWeight.w600,
+      );
+
+  TextStyle? get greySubtitle1 => titleMedium?.copyWith(
+        color: Colors.grey,
+      );
+
+  TextStyle? get violetHeadline6 => titleLarge?.copyWith(
+        color: AppColor.violet,
       );
 }
 // Theme.of(context).textTheme.royalBlueSubtitle1

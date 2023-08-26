@@ -1,4 +1,5 @@
-import 'results.dart';
+import 'package:tmdb_movies_flutter/data/models/home/results.dart';
+
 
 class MoviesResultModel {
   int? page;
