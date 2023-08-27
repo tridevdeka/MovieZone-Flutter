@@ -59,5 +59,10 @@ extension ThemeTextExtension on TextTheme {
   TextStyle? get violetHeadline6 => titleLarge?.copyWith(
         color: AppColor.violet,
       );
+
+  TextStyle? get vulcanBodyText2 => bodyMedium?.copyWith(
+    color: AppColor.vulcan,
+    fontWeight: FontWeight.w600,
+  );
 }
 // Theme.of(context).textTheme.royalBlueSubtitle1
