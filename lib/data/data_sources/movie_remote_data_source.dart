@@ -5,6 +5,7 @@ import 'package:tmdb_movies_flutter/data/models/credits/cast_list_model.dart';
 import 'package:tmdb_movies_flutter/data/models/movie_detail/movie_detail_model.dart';
 import 'package:tmdb_movies_flutter/data/models/trailers/movie_trailers.dart';
 import 'package:tmdb_movies_flutter/data/models/trailers/results.dart';
+import 'package:tmdb_movies_flutter/domain/entities/movie_entity.dart';
 
 import '../models/credits/cast.dart';
 import '../models/home/movies_result_model.dart';
@@ -24,6 +25,8 @@ abstract class MovieRemoteDataSource {
   Future<List<CastModel>> getCasts(int id);
 
   Future<List<VideoModel>> getVideos(int id);
+
+  Future<List<MovieModel>> getSearchedMovies(String searchKeyword);
 }
 
 class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
@@ -78,5 +81,14 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
     final responseBody = await _client.get('movie/$id/videos');
     final videos = VideoResult.fromJson(responseBody).results;
     return videos!;
+  }
+
+  @override
+  Future<List<MovieModel>> getSearchedMovies(String searchKeyword) async {
+    final responseBody = await _client.get('search/movie', params: {
+      'query':searchKeyword,
+    });
+    final movies = MoviesResultModel.fromJson(responseBody).results;
+    return movies!;
   }
 }

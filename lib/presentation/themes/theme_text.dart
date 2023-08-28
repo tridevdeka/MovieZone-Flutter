@@ -61,8 +61,12 @@ extension ThemeTextExtension on TextTheme {
       );
 
   TextStyle? get vulcanBodyText2 => bodyMedium?.copyWith(
-    color: AppColor.vulcan,
-    fontWeight: FontWeight.w600,
-  );
+        color: AppColor.vulcan,
+        fontWeight: FontWeight.w600,
+      );
+
+  TextStyle? get greyCaption => bodySmall?.copyWith(
+        color: Colors.grey,
+      );
 }
 // Theme.of(context).textTheme.royalBlueSubtitle1

@@ -4,6 +4,7 @@ import 'package:tmdb_movies_flutter/di/get_it.dart';
 import 'package:tmdb_movies_flutter/presentation/blocs/movie_backdrop_bloc/movie_backdrop_bloc.dart';
 import 'package:tmdb_movies_flutter/presentation/blocs/movie_carousel_bloc/movie_carousel_bloc.dart';
 import 'package:tmdb_movies_flutter/presentation/blocs/movie_tabbed/movie_tabbed_bloc.dart';
+import 'package:tmdb_movies_flutter/presentation/blocs/search_movie_bloc/search_movie_bloc.dart';
 import 'package:tmdb_movies_flutter/presentation/journeys/home/movie_carousel/movie_carousel_widget.dart';
 import 'package:tmdb_movies_flutter/presentation/journeys/home/movie_tabbed/movie_tabbed_widget.dart';
 
@@ -21,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late MovieCarouselBloc movieCarouselBloc;
   late MovieBackdropBloc movieBackdropBloc;
   late MovieTabbedBloc movieTabbedBloc;
+  late SearchMovieBloc searchMovieBloc;
 
   @override
   void initState() {
@@ -33,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
     //Same instance is initialized which added on MovieCarouselBloc
     movieBackdropBloc = movieCarouselBloc.movieBackdropBloc;
     movieTabbedBloc = getItInstance<MovieTabbedBloc>();
+    searchMovieBloc = getItInstance<SearchMovieBloc>();
   }
 
   @override
@@ -41,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
     movieCarouselBloc.close();
     movieBackdropBloc.close();
     movieTabbedBloc.close();
+    searchMovieBloc.close();
   }
 
   @override
@@ -55,6 +59,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         BlocProvider<MovieTabbedBloc>(
           create: (context) => movieTabbedBloc,
+        ),
+        BlocProvider<SearchMovieBloc>(
+          create: (context) => searchMovieBloc,
         ),
       ],
       child: Scaffold(

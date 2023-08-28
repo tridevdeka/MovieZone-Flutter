@@ -23,4 +23,6 @@ abstract class MovieRepository {
 
   Future<Either<AppError, List<VideoEntity>?>> getVideos(int id);
 
+  Future<Either<AppError, List<MovieEntity>?>> getSearchedMovies(String searchKeyword);
+
 }
