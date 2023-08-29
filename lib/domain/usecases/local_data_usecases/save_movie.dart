@@ -4,15 +4,13 @@ import 'package:tmdb_movies_flutter/domain/entities/app_error.dart';
 import 'package:tmdb_movies_flutter/domain/entities/movie_entity.dart';
 import 'package:tmdb_movies_flutter/domain/usecases/usecase.dart';
 
-import '../entities/no_params.dart';
-
-class GetPopular extends UseCase<List<MovieEntity>?,NoParams> {
+class SaveMovie extends UseCase<void, MovieEntity> {
   final MovieRepository movieRepository;
 
-  GetPopular(this.movieRepository);
+  SaveMovie(this.movieRepository);
 
   @override
-  Future<Either<AppError, List<MovieEntity>?>> call(NoParams noParams) async {
-    return await movieRepository.getPopular();
+  Future<Either<AppError, void>> call(MovieEntity params) async {
+    return movieRepository.saveMovie(params);
   }
 }

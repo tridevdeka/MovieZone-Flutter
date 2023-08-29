@@ -11,5 +11,6 @@ class AppError extends Equatable {
 
 enum AppErrorType {
   api,
-  network
+  network,
+  database,
 }

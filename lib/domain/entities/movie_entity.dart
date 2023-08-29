@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:tmdb_movies_flutter/domain/entities/movie_details_entity.dart';
 
 class MovieEntity extends Equatable{
 
@@ -25,5 +26,17 @@ class MovieEntity extends Equatable{
 
   @override
   bool get stringify=>true;
+
+  factory MovieEntity.fromMovieDetailEntity(MovieDetailEntity movieDetailEntity){
+    return MovieEntity(
+      backdropPath: movieDetailEntity.backdropPath,
+      overview: movieDetailEntity.overview ,
+      voteAverage: movieDetailEntity.voteAverage,
+      releaseDate: movieDetailEntity.releaseDate,
+      posterPath: movieDetailEntity.posterPath,
+      title: movieDetailEntity.title,
+      id:movieDetailEntity.id
+    );
+  }
 
 }

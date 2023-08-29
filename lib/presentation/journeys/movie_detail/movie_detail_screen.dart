@@ -8,6 +8,7 @@ import 'package:tmdb_movies_flutter/common/extensions/size_extensions.dart';
 import 'package:tmdb_movies_flutter/common/extensions/string_extension.dart';
 import 'package:tmdb_movies_flutter/di/get_it.dart';
 import 'package:tmdb_movies_flutter/presentation/blocs/cast_bloc/cast_bloc.dart';
+import 'package:tmdb_movies_flutter/presentation/blocs/favorite_movies/favorite_movies_bloc.dart';
 import 'package:tmdb_movies_flutter/presentation/blocs/movie_detail/movie_detail_bloc.dart';
 import 'package:tmdb_movies_flutter/presentation/journeys/movie_detail/movie_detail_arguments.dart';
 
@@ -29,6 +30,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
   late MovieDetailBloc _movieDetailBloc;
   late final CastBloc _castBloc;
   late final VideoBloc _videoBloc;
+  late final FavoriteMoviesBloc _favoriteMoviesBloc;
 
   @override
   void initState() {
@@ -36,6 +38,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
     _movieDetailBloc = getItInstance<MovieDetailBloc>();
     _castBloc = _movieDetailBloc.castBloc;
     _videoBloc = _movieDetailBloc.videoBloc;
+    _favoriteMoviesBloc=_movieDetailBloc.favoriteMovieBloc;
     _movieDetailBloc.add(MovieDetailLoadEvent(widget.movieDetailsArguments.movieId));
   }
 
@@ -45,6 +48,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
     _movieDetailBloc.close();
     _castBloc.close();
     _videoBloc.close();
+    _favoriteMoviesBloc.close();
   }
 
   @override
@@ -55,6 +59,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
           BlocProvider.value(value: _movieDetailBloc),
           BlocProvider.value(value: _castBloc),
           BlocProvider.value(value: _videoBloc),
+          BlocProvider.value(value: _favoriteMoviesBloc),
         ],
         child: BlocBuilder<MovieDetailBloc, MovieDetailState>(
           builder: (context, state) {

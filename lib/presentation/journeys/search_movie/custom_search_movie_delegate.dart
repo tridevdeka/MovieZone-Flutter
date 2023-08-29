@@ -6,7 +6,6 @@ import 'package:tmdb_movies_flutter/common/constants/size_constants.dart';
 import 'package:tmdb_movies_flutter/common/constants/translation_constants.dart';
 import 'package:tmdb_movies_flutter/common/extensions/size_extensions.dart';
 import 'package:tmdb_movies_flutter/common/extensions/string_extension.dart';
-import 'package:tmdb_movies_flutter/domain/entities/app_error.dart';
 import 'package:tmdb_movies_flutter/presentation/blocs/search_movie_bloc/search_movie_bloc.dart';
 import 'package:tmdb_movies_flutter/presentation/themes/theme_color.dart';
 import 'package:tmdb_movies_flutter/presentation/themes/theme_text.dart';

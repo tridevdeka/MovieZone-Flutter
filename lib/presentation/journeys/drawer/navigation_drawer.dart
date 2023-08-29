@@ -7,11 +7,11 @@ import 'package:tmdb_movies_flutter/common/extensions/size_extensions.dart';
 import 'package:tmdb_movies_flutter/common/extensions/string_extension.dart';
 import 'package:tmdb_movies_flutter/presentation/blocs/language_bloc/language_bloc/language_bloc.dart';
 import 'package:tmdb_movies_flutter/presentation/journeys/drawer/navigation_list_item.dart';
-import 'package:tmdb_movies_flutter/presentation/themes/theme_color.dart';
 import 'package:tmdb_movies_flutter/presentation/widgets/logo.dart';
 import 'package:wiredash/wiredash.dart';
 
 import '../../widgets/app_dialog.dart';
+import '../favorite_screen/favorite_screen.dart';
 import 'navigation_expanded_list_tile.dart';
 
 class HomeNavigationDrawer extends StatelessWidget {
@@ -44,7 +44,13 @@ class HomeNavigationDrawer extends StatelessWidget {
             ),
             NavigationListItem(
               title: TranslationConstant.favoriteMovies.t(context)!,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => FavoriteMovieScreen(),
+                  ),
+                );
+              },
             ),
             NavigationExpandListItem(
               title: TranslationConstant.language.t(context)!,

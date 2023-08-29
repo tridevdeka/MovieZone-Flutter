@@ -1,12 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:tmdb_movies_flutter/data/models/credits/cast.dart';
-import 'package:tmdb_movies_flutter/data/models/trailers/results.dart';
 import 'package:tmdb_movies_flutter/domain/entities/cast_entity.dart';
 import 'package:tmdb_movies_flutter/domain/entities/movie_entity.dart';
 import 'package:tmdb_movies_flutter/domain/entities/video_entity.dart';
 
-import '../../domain/entities/app_error.dart';
-import '../../domain/entities/movie_details_entity.dart';
+import '../entities/app_error.dart';
+import '../entities/movie_details_entity.dart';
 
 abstract class MovieRepository {
   Future<Either<AppError, List<MovieEntity>?>> getTrending();
@@ -25,4 +23,13 @@ abstract class MovieRepository {
 
   Future<Either<AppError, List<MovieEntity>?>> getSearchedMovies(String searchKeyword);
 
+
+  //Database operations
+  Future<Either<AppError, void>> saveMovie(MovieEntity movieEntity);
+
+  Future<Either<AppError, List<MovieEntity>?>> getFavoriteMovies();
+
+  Future<Either<AppError, void>> deleteFavoriteMovie(int movieId);
+
+  Future<Either<AppError, bool>> checkIfMovieFavorite(int movieId);
 }

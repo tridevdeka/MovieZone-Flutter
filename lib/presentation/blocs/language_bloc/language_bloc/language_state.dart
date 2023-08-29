@@ -17,3 +17,13 @@ class LanguageLoaded extends LanguageState {
   @override
   List<Object> get props => [locale.languageCode];
 }
+
+
+class LanguageLoadedError extends LanguageState {
+  final AppErrorType errorType;
+
+  const LanguageLoadedError(this.errorType);
+
+  @override
+  List<Object> get props => [errorType];
+}

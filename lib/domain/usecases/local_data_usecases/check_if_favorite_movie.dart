@@ -4,15 +4,13 @@ import 'package:tmdb_movies_flutter/domain/entities/app_error.dart';
 import 'package:tmdb_movies_flutter/domain/entities/movie_params.dart';
 import 'package:tmdb_movies_flutter/domain/usecases/usecase.dart';
 
-import '../entities/movie_details_entity.dart';
-
-class GetMovieDetail extends UseCase<MovieDetailEntity?, MovieParams> {
+class CheckIfFavoriteMovie extends UseCase<bool, MovieParams> {
   final MovieRepository movieRepository;
 
-  GetMovieDetail(this.movieRepository);
+  CheckIfFavoriteMovie(this.movieRepository);
 
   @override
-  Future<Either<AppError, MovieDetailEntity?>> call(MovieParams params) async {
-    return await movieRepository.getMovieDetail(params.id);
+  Future<Either<AppError, bool>> call(MovieParams params) async {
+    return movieRepository.checkIfMovieFavorite(params.id);
   }
 }

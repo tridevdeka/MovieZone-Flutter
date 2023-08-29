@@ -7,6 +7,10 @@ abstract class LanguageEvent extends Equatable {
   List<Object?> get props => [];
 }
 
+class LoadPreferredLanguageEvent extends LanguageEvent{
+
+}
+
 class ToggleLanguageEvent extends LanguageEvent {
   final LanguageEntity languageEntity;
 
