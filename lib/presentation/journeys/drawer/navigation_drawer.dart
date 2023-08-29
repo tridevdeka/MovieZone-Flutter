@@ -10,6 +10,7 @@ import 'package:tmdb_movies_flutter/presentation/journeys/drawer/navigation_list
 import 'package:tmdb_movies_flutter/presentation/widgets/logo.dart';
 import 'package:wiredash/wiredash.dart';
 
+import '../../../common/constants/route_constants.dart';
 import '../../widgets/app_dialog.dart';
 import '../favorite_screen/favorite_screen.dart';
 import 'navigation_expanded_list_tile.dart';
@@ -45,11 +46,12 @@ class HomeNavigationDrawer extends StatelessWidget {
             NavigationListItem(
               title: TranslationConstant.favoriteMovies.t(context)!,
               onPressed: () {
-                Navigator.of(context).push(
+                Navigator.of(context).pushNamed(RouteList.favoriteScreen);
+                /*Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => FavoriteMovieScreen(),
                   ),
-                );
+                );*/
               },
             ),
             NavigationExpandListItem(

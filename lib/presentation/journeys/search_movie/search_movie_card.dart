@@ -7,6 +7,7 @@ import 'package:tmdb_movies_flutter/presentation/journeys/movie_detail/movie_det
 import 'package:tmdb_movies_flutter/presentation/journeys/movie_detail/movie_detail_screen.dart';
 import 'package:tmdb_movies_flutter/presentation/themes/theme_text.dart';
 
+import '../../../common/constants/route_constants.dart';
 import '../../../domain/entities/movie_entity.dart';
 
 class SearchMovieCard extends StatelessWidget {
@@ -18,11 +19,15 @@ class SearchMovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
+
+        Navigator.of(context).pushNamed(RouteList.movieDetail,arguments:MovieDetailsArguments(movie.id!));
+
+
+        /*Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => MovieDetailScreen(
             movieDetailsArguments: MovieDetailsArguments(movie.id!),
           ),
-        ));
+        ));*/
       },
       child: Padding(
         padding: EdgeInsets.symmetric(

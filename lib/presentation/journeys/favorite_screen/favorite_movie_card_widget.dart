@@ -9,6 +9,8 @@ import 'package:tmdb_movies_flutter/presentation/blocs/favorite_movies/favorite_
 import 'package:tmdb_movies_flutter/presentation/journeys/movie_detail/movie_detail_arguments.dart';
 import 'package:tmdb_movies_flutter/presentation/journeys/movie_detail/movie_detail_screen.dart';
 
+import '../../../common/constants/route_constants.dart';
+
 class FavoriteMovieCardWidget extends StatelessWidget {
   final MovieEntity movie;
 
@@ -23,7 +25,11 @@ class FavoriteMovieCardWidget extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).push(
+
+          Navigator.of(context).pushNamed(RouteList.movieDetail,arguments:MovieDetailsArguments(movie.id!));
+
+
+          /*Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) {
                 return MovieDetailScreen(
@@ -31,7 +37,7 @@ class FavoriteMovieCardWidget extends StatelessWidget {
                 );
               },
             ),
-          );
+          );*/
         },
         child: ClipRRect(
           borderRadius: BorderRadius.circular(Sizes.dimen_8.w),

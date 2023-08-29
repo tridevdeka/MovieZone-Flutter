@@ -7,6 +7,7 @@ import 'package:tmdb_movies_flutter/common/extensions/string_extension.dart';
 import 'package:tmdb_movies_flutter/presentation/journeys/watch_videos/watch_video_screen.dart';
 import 'package:tmdb_movies_flutter/presentation/journeys/watch_videos/watch_videos_arguments.dart';
 
+import '../../../common/constants/route_constants.dart';
 import '../../widgets/button.dart';
 import '../video_bloc/video_bloc.dart';
 
@@ -24,10 +25,14 @@ class VideosWidget extends StatelessWidget {
             return Button(
               text: TranslationConstant.watchTrailers,
               onPressed: () {
-                Navigator.of(context).push(
+
+                Navigator.of(context).pushNamed(RouteList.watchTrailer,arguments:WatchVideosArguments(state.videos));
+
+
+                /*Navigator.of(context).push(
                   MaterialPageRoute(
                       builder: (context) => WatchVideoScreen(watchVideosArguments: WatchVideosArguments(state.videos))),
-                );
+                );*/
               },
             );
           } else if (state is VideoLoadedError) {
