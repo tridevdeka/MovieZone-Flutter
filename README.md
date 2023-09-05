@@ -8,21 +8,21 @@
 
 ## ✨ Screenshots
 
-<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/4cfb2463-4ef4-48a7-9122-71280b9890b2" width="300" height="600"> 
+<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/4cfb2463-4ef4-48a7-9122-71280b9890b2" width="200" height="600"> 
 
-<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/78fe03f0-e50c-4fea-809c-358fc2d4f32d" width="300" height="600"> 
+<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/78fe03f0-e50c-4fea-809c-358fc2d4f32d" width="200" height="600"> 
 
-<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/9d1a0774-27da-4c8e-af14-f3ed5be58002" width="300" height="600"> 
+<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/9d1a0774-27da-4c8e-af14-f3ed5be58002" width="200" height="600"> 
 
-<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/d9715317-8971-4811-a2c1-1374dea93728" width="300" height="600"> 
+<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/d9715317-8971-4811-a2c1-1374dea93728" width="200" height="600"> 
 
-<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/644df61e-9d0a-4fb0-81f8-9832925e5087" width="300" height="600"> 
+<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/644df61e-9d0a-4fb0-81f8-9832925e5087" width="200" height="600"> 
 
-<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/58c62d76-688f-48a5-b6cf-ebca46bde346" width="300" height="600">
+<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/58c62d76-688f-48a5-b6cf-ebca46bde346" width="200" height="600">
 
-<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/1e337cd0-e3e3-4f6c-9334-3a9f59310041" width="300" height="600"> 
+<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/1e337cd0-e3e3-4f6c-9334-3a9f59310041" width="200" height="600"> 
 
-<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/65b61b06-f47d-4caa-81d8-773f8a17ac2f" width="300" height="600">
+<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/65b61b06-f47d-4caa-81d8-773f8a17ac2f" width="200" height="600">
 
 ## 🌟 Features
 *   Discover the most popular and the most Trending movies
