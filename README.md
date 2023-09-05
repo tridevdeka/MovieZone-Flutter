@@ -8,7 +8,13 @@
 
 ## ✨ Screenshots
 
-<img src="https://user-images.githubusercontent.com/49573131/142771233-52e5fe5d-86a5-4997-bbee-785e667060d7.jpg" width="320" height="600">          <img src="https://user-images.githubusercontent.com/49573131/142771983-a1e618d6-bb49-4c2d-830c-814cd39b7dd1.png" width="320" height="600">          <img src="https://user-images.githubusercontent.com/49573131/142771987-d4e97a12-6915-43d5-b127-34c09577295e.png" width="320" height="600">          <img src="https://user-images.githubusercontent.com/49573131/142772051-3674a96c-bd47-4795-9439-d1c9e86681e7.png" width="320" height="600">          <img src="https://user-images.githubusercontent.com/49573131/142772091-312df8f1-4f8a-44b0-a15d-0a35837757c0.png" width="320" height="600">
+<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/4cfb2463-4ef4-48a7-9122-71280b9890b2)" width="320" height="600"> 
+
+<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/78fe03f0-e50c-4fea-809c-358fc2d4f32d" width="320" height="600"> 
+
+
+
+
 
 ## 🌟 Features
 *   Discover the most popular and the most Trending movies
