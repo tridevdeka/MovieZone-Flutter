@@ -10,9 +10,10 @@
 
 <img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/4cfb2463-4ef4-48a7-9122-71280b9890b2" width="400" height="600"> 
 
-<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/78fe03f0-e50c-4fea-809c-358fc2d4f32d" width="400" height="600"> 
-
-<img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/9d1a0774-27da-4c8e-af14-f3ed5be58002" width="400" height="600"> 
+<div class="image-container">
+        <img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/78fe03f0-e50c-4fea-809c-358fc2d4f32d" alt="Image 1">
+        <img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/9d1a0774-27da-4c8e-af14-f3ed5be58002" alt="Image 2">
+    </div>
 
 <img src="https://github.com/tridevdeka/MovieZone-Flutter/assets/49573131/d9715317-8971-4811-a2c1-1374dea93728" width="400" height="600"> 
 
