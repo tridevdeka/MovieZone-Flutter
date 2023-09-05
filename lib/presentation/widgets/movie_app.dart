@@ -7,6 +7,8 @@ import 'package:tmdb_movies_flutter/common/screenutil/screenutil.dart';
 import 'package:tmdb_movies_flutter/di/get_it.dart';
 import 'package:tmdb_movies_flutter/presentation/app_localization.dart';
 import 'package:tmdb_movies_flutter/presentation/blocs/language_bloc/language_bloc/language_bloc.dart';
+import 'package:tmdb_movies_flutter/presentation/blocs/loading/loading_bloc.dart';
+import 'package:tmdb_movies_flutter/presentation/journeys/loading/loading_screen.dart';
 import 'package:tmdb_movies_flutter/presentation/themes/theme_color.dart';
 import 'package:tmdb_movies_flutter/presentation/themes/theme_text.dart';
 import 'package:tmdb_movies_flutter/presentation/widgets/wiredash_widget.dart';
@@ -24,6 +26,7 @@ class MovieApp extends StatefulWidget {
 
 class _MovieAppState extends State<MovieApp> {
   late LanguageBloc _languageBloc;
+  late LoadingBloc _loadingBloc;
 
   final _navigatorKey = GlobalKey<NavigatorState>();
 
@@ -31,20 +34,29 @@ class _MovieAppState extends State<MovieApp> {
   void initState() {
     _languageBloc = getItInstance<LanguageBloc>();
     _languageBloc.add(LoadPreferredLanguageEvent());
+    _loadingBloc = getItInstance<LoadingBloc>();
     super.initState();
   }
 
   @override
   void dispose() {
     _languageBloc.close();
+    _loadingBloc.close();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init();
-    return BlocProvider<LanguageBloc>(
-      create: (context) => _languageBloc,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<LanguageBloc>.value(
+          value: _languageBloc,
+        ),
+        BlocProvider<LoadingBloc>.value(
+          value: _loadingBloc,
+        ),
+      ],
       child: BlocBuilder<LanguageBloc, LanguageState>(
         builder: (context, state) {
           if (state is LanguageLoaded) {
@@ -73,7 +85,7 @@ class _MovieAppState extends State<MovieApp> {
                 ],
                 // home: HomeScreen(),
                 builder: (context, child) {
-                  return child!;
+                  return LoadingScreen(screen: child!);
                 },
                 initialRoute: RouteList.initial,
                 onGenerateRoute: (RouteSettings settings) {

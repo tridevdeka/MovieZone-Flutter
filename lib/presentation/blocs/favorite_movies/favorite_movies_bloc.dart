@@ -12,6 +12,7 @@ import '../../../domain/usecases/local_data_usecases/check_if_favorite_movie.dar
 import '../../../domain/usecases/local_data_usecases/delete_movie.dart';
 import '../../../domain/usecases/local_data_usecases/get_movies.dart';
 import '../../../domain/usecases/local_data_usecases/save_movie.dart';
+import '../loading/loading_bloc.dart';
 
 part 'favorite_movies_event.dart';
 
@@ -22,12 +23,15 @@ class FavoriteMoviesBloc extends Bloc<FavoriteMoviesEvent, FavoriteMoviesState> 
   final GetFavoriteMovies getFavoriteMovies;
   final DeleteFavoriteMovie deleteFavoriteMovie;
   final CheckIfFavoriteMovie checkIfFavoriteMovie;
+  final LoadingBloc loadingBloc;
+
 
   FavoriteMoviesBloc(
       {required this.saveMovie,
       required this.getFavoriteMovies,
       required this.deleteFavoriteMovie,
-      required this.checkIfFavoriteMovie})
+      required this.checkIfFavoriteMovie,
+        required this.loadingBloc})
       : super(FavoriteMoviesInitial()) {
 
     on<FavoriteMovieToggleEvent>(_favoriteMovieToggleEvent);
@@ -37,8 +41,11 @@ class FavoriteMoviesBloc extends Bloc<FavoriteMoviesEvent, FavoriteMoviesState> 
   }
 
   FutureOr<void> _favoriteMoviesLoadEvent(FavoriteMoviesLoadEvent event, Emitter<FavoriteMoviesState> emit) async {
+    loadingBloc.add(StartLoadingEvent());
+
     final moviesEither = await getFavoriteMovies(NoParams());
     emit(moviesEither.fold((l) => FavoriteMoviesErrorState(l.appErrorType), (r) => FavoriteMovieLoadedState(r!)));
+    loadingBloc.add(FinishLoadingEvent());
   }
 
   FutureOr<void> _favoriteMovieToggleEvent(FavoriteMovieToggleEvent event, Emitter<FavoriteMoviesState> emit) async {

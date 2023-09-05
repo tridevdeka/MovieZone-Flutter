@@ -7,6 +7,7 @@ import 'package:tmdb_movies_flutter/domain/entities/movie_search_params.dart';
 import '../../../domain/entities/app_error.dart';
 import '../../../domain/entities/movie_entity.dart';
 import '../../../domain/usecases/get_search_movies.dart';
+import '../loading/loading_bloc.dart';
 
 part 'search_movie_event.dart';
 
@@ -14,8 +15,10 @@ part 'search_movie_state.dart';
 
 class SearchMovieBloc extends Bloc<SearchMovieEvent, SearchMovieState> {
   final GetSearchedMovies getSearchedMovies;
+  final LoadingBloc loadingBloc;
 
-  SearchMovieBloc({required this.getSearchedMovies}) : super(SearchMovieInitial()) {
+
+  SearchMovieBloc({required this.loadingBloc,required this.getSearchedMovies}) : super(SearchMovieInitial()) {
     on<SearchMovieLoadEvent>(_searchMovieLoadEvent);
   }
 

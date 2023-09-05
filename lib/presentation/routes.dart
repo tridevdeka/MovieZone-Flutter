@@ -6,6 +6,7 @@ import 'package:tmdb_movies_flutter/presentation/journeys/movie_detail/movie_det
 import 'package:tmdb_movies_flutter/presentation/journeys/movie_detail/movie_detail_screen.dart';
 import 'package:tmdb_movies_flutter/presentation/journeys/watch_videos/watch_video_screen.dart';
 
+import 'journeys/loading/loading_screen.dart';
 import 'journeys/watch_videos/watch_videos_arguments.dart';
 
 class Routes {

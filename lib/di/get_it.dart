@@ -14,6 +14,7 @@ import 'package:tmdb_movies_flutter/domain/usecases/local_data_usecases/save_mov
 import 'package:tmdb_movies_flutter/domain/usecases/local_data_usecases/update_language.dart';
 import 'package:tmdb_movies_flutter/presentation/blocs/favorite_movies/favorite_movies_bloc.dart';
 import 'package:tmdb_movies_flutter/presentation/blocs/language_bloc/language_bloc/language_bloc.dart';
+import 'package:tmdb_movies_flutter/presentation/blocs/loading/loading_bloc.dart';
 import 'package:tmdb_movies_flutter/presentation/blocs/movie_backdrop_bloc/movie_backdrop_bloc.dart';
 import 'package:tmdb_movies_flutter/presentation/blocs/movie_carousel_bloc/movie_carousel_bloc.dart';
 import 'package:tmdb_movies_flutter/presentation/blocs/movie_detail/movie_detail_bloc.dart';
@@ -60,20 +61,24 @@ Future init() async {
     ..registerLazySingleton<AppRepository>(() => AppRepositoryImpl(getItInstance()))
     ..registerFactory(() => MovieBackdropBloc())
     ..registerFactory(() => FavoriteMoviesBloc(
+        loadingBloc: getItInstance(),
         saveMovie: getItInstance(),
         getFavoriteMovies: getItInstance(),
         deleteFavoriteMovie: getItInstance(),
         checkIfFavoriteMovie: getItInstance()))
     ..registerFactory(() => MovieDetailBloc(
+        loadingBloc: getItInstance(),
         getMovieDetail: getItInstance(),
         castBloc: getItInstance(),
         videoBloc: getItInstance(),
         favoriteMovieBloc: getItInstance()))
     ..registerFactory(() => CastBloc(getItInstance()))
     ..registerFactory(() => VideoBloc(getItInstance()))
-    ..registerFactory(() => SearchMovieBloc(getSearchedMovies: getItInstance()))
-    ..registerFactory(() => MovieCarouselBloc(getItInstance(), getTrending: getItInstance()))
+    ..registerFactory(() => SearchMovieBloc(loadingBloc: getItInstance(), getSearchedMovies: getItInstance()))
+    ..registerFactory(() => MovieCarouselBloc(
+        loadingBloc: getItInstance(), movieBackdropBloc: getItInstance(), getTrending: getItInstance()))
     ..registerFactory(() =>
         MovieTabbedBloc(getPopular: getItInstance(), getPlayingNow: getItInstance(), getComingSoon: getItInstance()))
-    ..registerSingleton(LanguageBloc(getPreferredLanguage: getItInstance(),updateLanguage: getItInstance()));
+    ..registerSingleton(LanguageBloc(getPreferredLanguage: getItInstance(), updateLanguage: getItInstance()))
+    ..registerSingleton(LoadingBloc());
 }

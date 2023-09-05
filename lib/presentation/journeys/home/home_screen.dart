@@ -70,11 +70,11 @@ class _HomeScreenState extends State<HomeScreen> {
           bloc: movieCarouselBloc,
           builder: (context, state) {
             switch (state.runtimeType) {
-              case MovieCarouselLoadingState:
+              /*case MovieCarouselLoadingState:
                 return Scaffold(
                     body: Center(
                   child: CircularProgressIndicator(),
-                ));
+                ));*/
               case MovieCarouselLoaded:
                 final loadedState = state as MovieCarouselLoaded;
                 return Stack(

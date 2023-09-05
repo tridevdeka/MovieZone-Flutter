@@ -63,12 +63,12 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
         ],
         child: BlocBuilder<MovieDetailBloc, MovieDetailState>(
           builder: (context, state) {
-            if (state is MovieDetailLoadingState) {
+            /*if (state is MovieDetailLoadingState) {
               return Container(
                 alignment: Alignment.center,
                 child: CircularProgressIndicator(),
               );
-            } else if (state is MovieDetailLoadedState) {
+            } else*/ if (state is MovieDetailLoadedState) {
               final movieDetail = state.movieDetailEntity;
               return SingleChildScrollView(
                 scrollDirection: Axis.vertical,

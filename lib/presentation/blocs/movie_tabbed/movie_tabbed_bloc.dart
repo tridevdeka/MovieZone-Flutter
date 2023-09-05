@@ -27,7 +27,6 @@ class MovieTabbedBloc extends Bloc<MovieTabbedEvent, MovieTabbedState> {
 
   FutureOr<void> _movieTabChangedEvent(MovieTabChangedEvent event, Emitter<MovieTabbedState> emit) async {
     emit(MovieTabbedLoadingState(event.currentTabIndex));
-
     Either<AppError, List<MovieEntity>?> moviesEither;
     switch (event.currentTabIndex) {
       case 0:
